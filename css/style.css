@@ -1,97 +1,186 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,900&display=swap');
-*{
-    font-family: 'Poppins',cursive;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+:root {
+    --gold: #d4af37;
+    /* Metallic Gold */
+    --gold-bright: #f1d592;
+    --deep-navy: #050510;
+    --ivory: #fcfcfc;
+    --accent-pink: #f7c5cc;
+    --glass: rgba(255, 255, 255, 0.05);
+    --border: rgba(212, 175, 55, 0.3);
 }
-body{
-    color: azure;
-    width: 100%;
-    height: 82vh;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--deep-navy);
+    background-image: radial-gradient(circle at center, #1a1a2e 0%, #050510 100%);
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: black;
-    /* padding-top: -30; */
+    overflow: hidden;
+    color: var(--ivory);
 }
 
-.botones{
-    padding: 9px;
-    border-radius: 80px;
-    background-color: transparent;
-    border: none;
+.elegant-wrapper {
+    z-index: 10;
+    width: 90%;
+    max-width: 500px;
+    perspective: 1000px;
 }
 
-.botones a{
-    background-color: #e9d60a;
-    padding: 9px;
-    border-radius: 80px;
-    -webkit-border-radius: 80px;
-    -moz-border-radius: 80px;
-    -ms-border-radius: 80px;
-    -o-border-radius: 80px;
-    
+.elegant-card {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    /* Sharp, sophisticated edges */
+    padding: 4rem 2rem;
+    text-align: center;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+    animation: slideUpFade 1.5s ease-out forwards;
+    position: relative;
+    overflow: hidden;
 }
 
-.botones a:focus{
-    background-color: rgb(250, 250, 250);
+.elegant-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--accent-pink), var(--gold), transparent);
 }
 
-.greetings{
-    font-size: 7rem;
-    font-weight: 900;
-}
-.greetings > span{
-    animation: glow 2.5s ease-in-out infinite;
-}
-@keyframes glow{
-    0%, 100%{
-        color: #fff;
-        text-shadow: 0 0 12px #39c6d6, 0 0 50px #39c6d6, 0 0 100px #39c6d6;
-    }
-    10%, 90%{
-        color: #111;
-        text-shadow: none;
-    }
-}
-.greetings > span:nth-child(2){
-    animation-delay: .2s ;
-}
-.greetings > span:nth-child(3){
-    animation-delay: .4s ;
-}
-.greetings > span:nth-child(4){
-    animation-delay: .6s;
-}
-.greetings > span:nth-child(5){
-    animation-delay: .8s;
-}
-.greetings > span:nth-child(6){
-    animation-delay: 1s;
+.greeting-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 0.5s forwards;
 }
 
-.description{
+.name-display {
     font-size: 1.5rem;
-    margin-bottom: 20px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 0.8s forwards;
 }
 
-.button a{
+.divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 1.5rem;
+    opacity: 0;
+    animation: expandWidth 1s ease-out 1s forwards;
+}
+
+.subtext {
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: rgba(252, 252, 252, 0.6);
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1.2s forwards;
+}
+
+.elegant-btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
     text-decoration: none;
-    font-size: 1rem;
-    color: #111;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    position: relative;
+    background: transparent;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1.5s forwards;
 }
 
-@media screen and (max-width:574px){
-    .greetings{
-        display: block;
-        font-size: 4rem;
-        font-weight: 800;
-        text-align: center;
+.elegant-btn:hover {
+    background: var(--gold);
+    color: var(--deep-navy);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4), 0 0 10px rgba(247, 197, 204, 0.2);
+    border-color: var(--gold-bright);
+}
+
+.ambient-glow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.05) 0%, transparent 70%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
     }
-    .description{
-        font-size: 2rem;
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-    
-    .button a{
-        font-size: 1rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 40px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .greeting-text {
+        font-size: 2.2rem;
+    }
+
+    .name-display {
+        font-size: 1.2rem;
+        letter-spacing: 4px;
+    }
+
+    .elegant-card {
+        padding: 3rem 1.5rem;
     }
 }
