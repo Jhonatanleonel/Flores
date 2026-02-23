@@ -329,6 +329,7 @@
       Tienes una vibra muy linda, así que ojalá este año te devuelva cosas igual de bonitas.
       Disfruta tu día… y luego guardamos una celebración pendiente.
     </p>
+    <button id="playButton" class="audio-btn">Reproducir Sonido</button>
   </div>
   <script src="anim.js"></script>
   <script src="main.js"></script>
@@ -337,14 +338,11 @@
 </html>
 <script>
   const audio = document.getElementById("audio");
+  const playButton = document.getElementById("playButton");
 
-  const setAudioTime = () => {
+  playButton.addEventListener("click", () => {
     audio.currentTime = 184; // 3 minutos y 4 segundos
-  };
-
-  if (audio.readyState > 0) {
-    setAudioTime();
-  } else {
-    audio.addEventListener("loadedmetadata", setAudioTime);
-  }
+    audio.play();
+    playButton.classList.add("hidden");
+  });
 </script>
