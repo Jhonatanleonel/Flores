@@ -15,6 +15,8 @@
   --leaf-green: #2d4138;
   --plant-blue: #6b7da1;
   --plant-blue-dark: #3e4b5f;
+  color-scheme: light;
+
 }
 
 body {
@@ -31,7 +33,7 @@ body {
 .flowers-section {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 99.99vh;
   flex-shrink: 0;
   display: flex;
   justify-content: center;
